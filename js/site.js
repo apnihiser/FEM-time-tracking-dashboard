@@ -1,41 +1,109 @@
 // VARIABLES
-const workCurrentHours = document.getElementById("work-current-hours");
-const workPreviousHours = document.getElementById("work-previous-hours");
-const playCurrentHours = document.getElementById("place-current-hours");
-const playPreviousHours = document.getElementById("place-previous-hours");
-const studyCurrentHours = document.getElementById("study-current-hours");
-const studyPreviousHours = document.getElementById("study-previous-hours");
-const exerciseCurrentHours = document.getElementById("exercise-current-hours");
-const exercisePreviousHours = document.getElementById(
-  "exercise-previous-hours"
-);
-const socialCurrentHours = document.getElementById("social-current-hours");
-const socialPreviousHours = document.getElementById("social-previous-hours");
-const selfCareCurrentHours = document.getElementById("selfcare-current-hours");
-const selfCarePreviousHours = document.getElementById(
-  "selfcare-previous-hours"
-);
-const parentEl = document.querySelector("article");
-const cards = document.querySelectorAll(".card");
-const state = {};
+const cardsParentEl = document.querySelector(".cards-container");
+const linksParentEl = document.querySelector(".time-selector");
+
+let state = {};
+
 // FUNCTIONS
-const data = function () {
+const fetchData = function () {
   fetch("../data.json")
     .then((res) => res.json())
     .then((data) => {
       if (!data) return;
-      data.forEach((item) => console.log(item));
+
+      state = data;
+
+      state.forEach((card) => renderCardsDaily(card));
     })
-    .catch((err) => alert(err));
+    .catch((err) => console.error("💩💩💩:", err));
 };
 
-data();
-console.log(cards);
+const removeWhiteSpace = function (word) {
+  return word.replace(/\s+/g, "-");
+};
+
+const renderCardsDaily = function (card) {
+  cardsParentEl.insertAdjacentHTML(
+    "beforeend",
+    `
+  <div class="card border-radius-med">
+    <div class="inner-card-back ${removeWhiteSpace(
+      card.title
+    ).toLowerCase()}-card-bg border-radius-med">
+    </div>
+    <div class="inner-card-front border-radius-med padding-med">
+      <div class="card-title">
+        <div class="card-title">${card.title}</div>
+        <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+      </div>
+      <div class="card-data">
+        <div class="current-hours">${card.timeframes.daily.current}hrs</div>
+        <div class="previous-hours">Last Week &mdash; ${
+          card.timeframes.daily.previous
+        }hrs</div>
+      </div>
+    </div>
+  </div>
+  `
+  );
+};
+
+const renderCardsWeekly = function (card) {
+  cardsParentEl.insertAdjacentHTML(
+    "beforeend",
+    `
+  <div class="card border-radius-med">
+    <div class="inner-card-back ${removeWhiteSpace(
+      card.title
+    ).toLowerCase()}-card-bg border-radius-med">
+    </div>
+    <div class="inner-card-front border-radius-med padding-med">
+      <div class="card-title">
+        <div class="card-title">${card.title}</div>
+        <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+      </div>
+      <div class="card-data">
+        <div class="current-hours">${card.timeframes.weekly.current}hrs</div>
+        <div class="previous-hours">Last Week &mdash; ${
+          card.timeframes.weekly.previous
+        }hrs</div>
+      </div>
+    </div>
+  </div>
+  `
+  );
+};
+
+const renderCardsMonthly = function (card) {
+  cardsParentEl.insertAdjacentHTML(
+    "beforeend",
+    `
+  <div class="card border-radius-med">
+    <div class="inner-card-back ${removeWhiteSpace(
+      card.title
+    ).toLowerCase()}-card-bg border-radius-med">
+    </div>
+    <div class="inner-card-front border-radius-med padding-med">
+      <div class="card-title">
+        <div class="card-title">${card.title}</div>
+        <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+      </div>
+      <div class="card-data">
+        <div class="current-hours">${card.timeframes.monthly.current}hrs</div>
+        <div class="previous-hours">Last Week &mdash; ${
+          card.timeframes.monthly.previous
+        }hrs</div>
+      </div>
+    </div>
+  </div>
+  `
+  );
+};
 
 // EVENT LISTENERS
 
 // hover effect on cards
-parentEl.addEventListener("mouseover", function (e) {
+cardsParentEl.addEventListener("mouseover", function (e) {
   const target = e.target.closest(".inner-card-front");
 
   if (!target) return;
@@ -43,10 +111,32 @@ parentEl.addEventListener("mouseover", function (e) {
   target.style.backgroundColor = "rgb(111, 118, 200)";
 });
 
-parentEl.addEventListener("mouseout", function (e) {
+cardsParentEl.addEventListener("mouseout", function (e) {
   const target = e.target.closest(".inner-card-front");
 
   if (!target) return;
 
   target.style.backgroundColor = "hsl(235, 46%, 20%)";
 });
+
+// Click Link Events
+linksParentEl.addEventListener("click", function (e) {
+  e.preventDefault();
+  const target = e.target;
+
+  if (target.classList.contains("daily-link")) {
+    cardsParentEl.innerHTML = "";
+    state.forEach((card) => renderCardsDaily(card));
+  }
+
+  if (target.classList.contains("weekly-link")) {
+    cardsParentEl.innerHTML = "";
+    state.forEach((card) => renderCardsWeekly(card));
+  }
+  if (target.classList.contains("monthly-link")) {
+    cardsParentEl.innerHTML = "";
+    state.forEach((card) => renderCardsMonthly(card));
+  }
+});
+
+fetchData();
