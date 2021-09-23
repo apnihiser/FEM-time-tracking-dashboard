@@ -16,38 +16,140 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/css/site.css" />
-    <script src="js/site.js"></script>
+    <script defer src="js/site.js"></script>
 
     <title>Frontend Mentor | Time tracking dashboard</title>
   </head>
   <body>
-    <header></header>
+    <main class="container">
+      <article class="col-4">
 
-      <main>
-        <article>
+        <!-- CONTROL PANEL -->
+        <div class="control-card row-1-span-2 border-radius-med">
+          <div class="user-info padding-med border-radius-med">
+            <img class="control-img" src="images/image-jeremy.png" alt="Headshot of Jeremy Robson" />
+            <h3 class="control-card-header">Report for</h3>
+            <h1 class="control-card-name ">Jeremy Robson</h1>
+          </div>
+          <div class="time-selector padding-med">
+            <div class="time-period"><a href= "#" class="link">Daily</a></div>
+            <div class="time-period"><a href= "#" class="link">Weekly</a></div>
+            <div class="time-period"><a href= "#" class="link">Monthly</a></div>
+          </div>
+        </div>
 
-          <div class="control-panel"></div>
-          <div class="work-panel"></div>
-          <div class="play-panel"></div>
-          <div class="study-panel"></div>
-          <div class="exercise-panel"></div>
-          <div class="social-panel"></div>
-          <div class="self-care-panel"></div>
+        <!-- WORK CARD -->
+        <div class="card border-radius-med">
+          <div class="inner-card-back work-card-bg border-radius-med">
+          </div>
+          <div class="inner-card-front border-radius-med padding-med">
+            <div class="card-title">
+              <div class="card-title">Work</div>
+              <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+            </div>
+            <div class="card-data">
+              <div class="current-hours" id="work-current-hours">32hrs</div>
+              <div class="previous-hours" id="work-previous-hours">Last Week &mdash; 36hrs</div>
+            </div>
+          </div>
+        </div>
 
+        <!-- PLAY CARD -->
+        <div class="card border-radius-med">
+          <div class="inner-card-back play-card-bg border-radius-med">
+          </div>
+          <div class="inner-card-front border-radius-med padding-med">
+            <div class="card-title">
+              <div class="card-title">Play</div>
+              <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+            </div>
+            <div class="card-data">
+              <div class="current-hours" id="play-current-hours">32hrs</div>
+              <div class="previous-hours" id="play-previous-hours">Last Week &mdash; 36hrs</div>
+            </div>
+          </div>
+        </div>
 
+        <!-- STUDY CARD -->
+        <div class="card border-radius-med">
+          <div class="inner-card-back study-card-bg border-radius-med">
+          </div>
+          <div class="inner-card-front border-radius-med padding-med">
+            <div class="card-title">
+              <div class="card-title">Study</div>
+              <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+            </div>
+            <div class="card-data">
+              <div class="current-hours" id="study-current-hours">32hrs</div>
+              <div class="previous-hours" id="study-previous-hours">Last Week &mdash; 36hrs</div>
+            </div>
+          </div>
+        </div>
 
+        <!-- EXERCISE CARD -->
+        <div class="card border-radius-med">
+          <div class="inner-card-back exercise-card-bg border-radius-med">
+          </div>
 
+          <div class="inner-card-front border-radius-med padding-med">
+            <div class="card-title">
+              <div class="card-title">Exercise</div>
+              <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+            </div>
+            <div class="card-data">
+              <div class="current-hours" id="exercise-current-hours">32hrs</div>
+              <div class="previous-hours" id="exercise-previous-hours">Last Week &mdash; 36hrs</div>
+            </div>
+          </div>
+        </div>
 
-        </article>
-      </main>
-  </body>
+        <!-- SOCIAL CARD -->
+        <div class="card border-radius-med">
+          <div class="inner-card-back social-card-bg border-radius-med">
+          </div>
+
+          <div class="inner-card-front border-radius-med padding-med">
+            <div class="card-title">
+              <div class="card-title">Social</div>
+              <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+            </div>
+            <div class="card-data">
+              <div class="current-hours" id="social-current-hours">32hrs</div>
+              <div class="previous-hours" id="social-previous-hours">Last Week &mdash; 36hrs</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SELF CARE CARD -->
+        <div class="card border-radius-med">
+          <div class="inner-card-back self-care-card-bg border-radius-med">
+          </div>
+
+          <div class="inner-card-front border-radius-med padding-med">
+            <div class="card-title">
+              <div class="card-title">Self Care</div>
+              <div class="ellipsis"><img src="/images/icon-ellipsis.svg" /></div>
+            </div>
+            <div class="card-data">
+              <div class="current-hours" id="selfcare-current-hours">32hrs</div>
+              <div class="previous-hours"
+              id="selfcare-previous-hours">Last Week &mdash; 36hrs</div>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </main>
+
     <footer>
       <div class="attribution">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
           >Frontend Mentor</a
-        >. Coded by <a href="#">Adam Nihiser</a>.
+        >. Coded by <a href="https://github.com/apnihiser">Adam Nihiser</a>.
       </div>
     </footer>
+  </body>
+
   </body>
 </html>
