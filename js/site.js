@@ -38,7 +38,7 @@ const renderCardsDaily = function (card) {
       </div>
       <div class="card-data">
         <div class="current-hours">${card.timeframes.daily.current}hrs</div>
-        <div class="previous-hours">Last Week &mdash; ${
+        <div class="previous-hours">Yesterday &mdash; ${
           card.timeframes.daily.previous
         }hrs</div>
       </div>
@@ -90,7 +90,7 @@ const renderCardsMonthly = function (card) {
       </div>
       <div class="card-data">
         <div class="current-hours">${card.timeframes.monthly.current}hrs</div>
-        <div class="previous-hours">Last Week &mdash; ${
+        <div class="previous-hours">Last Month &mdash; ${
           card.timeframes.monthly.previous
         }hrs</div>
       </div>
