@@ -124,12 +124,18 @@ footer {
   color: var(--PaleBlue);
 }
 
+.link:link.selected-link,
+.link:visited.selected-link {
+  color: #fff;
+}
+
 .inner-card-front {
   background-color: var(--DarkBlue);
   position: absolute;
   bottom: 0px;
   width: 100%;
   height: 79%;
+  transition: all 0.2s;
 }
 
 .inner-card-back {
@@ -276,13 +282,13 @@ footer {
   }
 }
 
-@media(max-width: 24em) {
+@media (max-width: 24em) {
   .col-2 {
     /* 4 col grid */
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin-top: 2rem
+    margin-top: 2rem;
   }
 
   .col-3 {

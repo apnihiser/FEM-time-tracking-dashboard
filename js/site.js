@@ -1,7 +1,7 @@
 // VARIABLES
 const cardsParentEl = document.querySelector(".cards-container");
 const linksParentEl = document.querySelector(".time-selector");
-
+const links = document.querySelectorAll(".link");
 let state = {};
 
 // FUNCTIONS
@@ -20,6 +20,12 @@ const fetchData = function () {
 
 const removeWhiteSpace = function (word) {
   return word.replace(/\s+/g, "-");
+};
+
+const toggleLinks = function (targetLink) {
+  links.forEach((link) => link.classList.remove("selected-link"));
+
+  targetLink.classList.add("selected-link");
 };
 
 const renderCardsDaily = function (card) {
@@ -125,15 +131,18 @@ linksParentEl.addEventListener("click", function (e) {
   const target = e.target;
 
   if (target.classList.contains("daily-link")) {
+    toggleLinks(target);
     cardsParentEl.innerHTML = "";
     state.forEach((card) => renderCardsDaily(card));
   }
 
   if (target.classList.contains("weekly-link")) {
+    toggleLinks(target);
     cardsParentEl.innerHTML = "";
     state.forEach((card) => renderCardsWeekly(card));
   }
   if (target.classList.contains("monthly-link")) {
+    toggleLinks(target);
     cardsParentEl.innerHTML = "";
     state.forEach((card) => renderCardsMonthly(card));
   }
